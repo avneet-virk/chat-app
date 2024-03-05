@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-const projectID = '7f50e082-8cd1-4afa-8215-e42f188eac89';
 
 const Modal = () => {
   const [username, setUsername] = useState('');
@@ -10,7 +9,7 @@ const Modal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
+    const authObject = { 'Project-ID': process.env.REACT_APP_PROJECT_ID, 'User-Name': username, 'User-Secret': password };
 
     try {
       await fetch('https://api.chatengine.io/chats', {method:'GET', headers: authObject });
